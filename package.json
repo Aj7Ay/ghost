@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Backend API for Kubernetes Explorer chatbot",
   "type": "module",
+  "engines": {
+    "node": ">=20.x"
+  },
   "scripts": {
     "dev": "vercel dev",
     "build": "echo 'No build step required'"
