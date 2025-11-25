@@ -43,8 +43,33 @@ export default async function handler(
     return;
   }
 
+  // Handle GET requests for health check/testing
+  if (req.method === 'GET') {
+    return res.status(200).json({ 
+      message: 'Kubernetes Explorer Chat API',
+      status: 'active',
+      endpoints: {
+        chat: 'POST /api/chat',
+        description: 'Send a chat message to OpenRouter or Groq API'
+      },
+      usage: {
+        method: 'POST',
+        body: {
+          message: 'string (required)',
+          provider: 'openrouter | groq (required)',
+          model: 'string (optional)',
+          conversationHistory: 'array (optional)'
+        }
+      }
+    });
+  }
+
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+    return res.status(405).json({ 
+      error: 'Method not allowed',
+      message: 'This endpoint only accepts POST requests. Use POST method to send chat messages.',
+      allowedMethods: ['POST', 'GET', 'OPTIONS']
+    });
   }
 
   try {
