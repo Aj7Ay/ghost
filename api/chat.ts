@@ -56,6 +56,7 @@ export default async function handler(
 
     let response: Response;
     let responseData: OpenRouterResponse | GroqResponse;
+    let selectedModel: string;
 
     if (provider === 'openrouter') {
       const openRouterApiKey = process.env.OPENROUTER_API_KEY;
@@ -63,7 +64,7 @@ export default async function handler(
         return res.status(500).json({ error: 'OpenRouter API key not configured' });
       }
 
-      const selectedModel = model || 'openai/gpt-4o-mini';
+      selectedModel = model || 'openai/gpt-4o-mini';
       
       // Build messages array with system prompt for Kubernetes context
       const messages = [
@@ -107,7 +108,7 @@ export default async function handler(
         return res.status(500).json({ error: 'Groq API key not configured' });
       }
 
-      const selectedModel = model || 'llama-3.1-8b-instant';
+      selectedModel = model || 'llama-3.1-8b-instant';
       
       // Build messages array with system prompt for Kubernetes context
       const messages = [
