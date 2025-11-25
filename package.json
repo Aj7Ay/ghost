@@ -1,0 +1,17 @@
+{
+  "name": "ghost-api",
+  "version": "1.0.0",
+  "description": "Backend API for Kubernetes Explorer chatbot",
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build step required'"
+  },
+  "dependencies": {
+    "@vercel/node": "^3.0.0"
+  },
+  "devDependencies": {
+    "vercel": "^38.0.0"
+  }
+}
+
